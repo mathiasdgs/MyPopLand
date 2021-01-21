@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %} 
+<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    {% block navbar %}
+        {% include 'navbar.html.twig' %}
+    {% endblock %}   
+{% endblock %}
