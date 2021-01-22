@@ -1,34 +1,34 @@
- <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #67837f;">
-  <a class="navbar-brand" href="/">MatBlog</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="nav-content">
+    <div id="nav-top">
+        <a class="nav-title" href="/">MypopLand</a>
+         <li class="nav-item">
+                        <a class="nav-link-top" href="{{ path('app_login') }}">Login</a>
+                    </li>
+                        </br>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-top" href="{{ path('app_register') }}">register</a>
+                    </li>
+    </div>    
+            <div class="nav-bot" id="">
+                <ul class="">
+                    <li class="">
+                        <a class="nav-link-bot" href="/">Accueil</a>
+                    </li>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a class="nav-link" href="/">Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Article</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Categories</a>
-      </li>
-     
-      
-      <li class="nav-item">
-      <a class="nav-link" href="#">Login</a> </br>
-      </li>
-      <li class="nav-item">
-      <a class="nav-link" href="#">register</a>
-      </li>
-    </ul>
-    <form  class="d-flex">
-      <input  class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="input_search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
+                    <li class="nav-item">
+                        <a class="nav-link-bot" href="{{ path('article_index') }}">Figurines</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link-bot" href="{{ path('category_index') }}">Collections</a>
+                    </li>
+
+                   
+                </ul>
+                <form class="">
+                    <input class="" type="search" placeholder="Search" aria-label="Search" id="input_search">
+                    <button class="" type="submit">Search</button>
+                </form>
+    </div>
 </nav>
