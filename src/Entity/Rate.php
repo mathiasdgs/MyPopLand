@@ -30,7 +30,7 @@ class Rate
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="rate")
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="rate")
      */
     private $article;
 

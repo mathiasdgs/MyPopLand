@@ -36,20 +36,28 @@ class Article
 
   
 
+    
     /**
-     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="article")
-     */
-    private $category;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Rate::class, inversedBy="article")
+     * @ORM\OneToMany(targetEntity=Rate::class, mappedBy="article")
      */
     private $rate;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="articles")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
+     */
+    private $category;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
-        $this->category = new ArrayCollection();
+        
+        $this->user = new ArrayCollection();
+        
     }
 
     public function getTitle(): ?string
@@ -88,41 +96,6 @@ class Article
         return $this;
     }
 
-   
-   
-
-    
-
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategory(): Collection
-    {
-        return $this->category;
-    }
-
-    public function addCategory(Category $category): self
-    {
-        if (!$this->category->contains($category)) {
-            $this->category[] = $category;
-            $category->setArticle($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        if ($this->category->removeElement($category)) {
-            // set the owning side to null (unless already changed)
-            if ($category->getArticle() === $this) {
-                $category->setArticle(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getRate(): ?Rate
     {
         return $this->rate;
@@ -131,6 +104,42 @@ class Article
     public function setRate(?Rate $rate): self
     {
         $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->user->contains($user)) {
+            $this->user[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        $this->user->removeElement($user);
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

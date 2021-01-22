@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -23,10 +25,17 @@ class Category
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="category")
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="category")
      */
-    private $article;
+    private $articles;
 
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
+
+    
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -44,15 +53,34 @@ class Category
         return $this;
     }
 
-    public function getArticle(): ?Article
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
     {
-        return $this->article;
+        return $this->articles;
     }
 
-    public function setArticle(?Article $article): self
+    public function addArticle(Article $article): self
     {
-        $this->article = $article;
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setCategory($this);
+        }
 
         return $this;
     }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getCategory() === $this) {
+                $article->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
