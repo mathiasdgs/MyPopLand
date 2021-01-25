@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Article
+{% endblock %}
+
+{% block content %}
+	<h1>
+		Figurines
+	</h1>
+
+	{% for article in articles %} 
+
+	<div class="card card-4">
+		
+        <h1> {{ article.title }} </h1>
+		<p> {{ article.image }} </p>
+		<p>{{ article.createdAt ? article.createdAt|date('d-m-Y H:i:s') : '' }}</p>
+
+	</div>
+    
+
+{% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+
+{% endblock %}

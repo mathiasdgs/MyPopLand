@@ -30,7 +30,7 @@ class Article
     private $image;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $created_at;
 
@@ -58,6 +58,11 @@ class Article
         
         $this->user = new ArrayCollection();
         
+    }
+
+    public function getId(): ?string
+    {
+        return $this->id;
     }
 
     public function getTitle(): ?string
@@ -144,7 +149,12 @@ class Article
         return $this;
     }
 
-    
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->title;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
 
     
 }

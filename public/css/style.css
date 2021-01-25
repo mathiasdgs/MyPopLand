@@ -2,117 +2,100 @@
 /******  Nav Bar ***************/
 /******************************/
 
-@import url('https://fonts.googleapis.com/css2?family=Skranji&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap");
 
-.nav-content{
-    background-color:#3e4955;
-    
-}
-
-.nav-title{
-    font-family: 'Skranji', cursive;
-    font-size: 3em;
-    color: white;
-    text-shadow: black 3px 3px 2px ;
-    text-decoration: none;
-    padding-left: 1vw;
-    
-}
-#nav-title-logo{
-    width: 6vw;
-    height: 6vh;
-    padding-left: 2vw;
-    padding-top: 1.5vh;
-    border-radius: 70%
-}
-.nav-bot{
-    background-color: #8fa5bc;
-
+.nav-content {
+  background-color: #3e4955;
 }
 
-#nav-top-flex{
-    display: flex;
-    flex-direction: row;
-    
+.nav-title {
+  font-family: "Skranji", cursive;
+  font-size: 3em;
+  color: white;
+  text-shadow: black 3px 3px 2px;
+  text-decoration: none;
+  padding-left: 1vw;
+}
+#nav-title-logo {
+  width: 6vw;
+  height: 6vh;
+  padding-left: 2vw;
+  padding-top: 1.5vh;
+  border-radius: 70%;
+}
+.nav-bot {
+  background-color: #8fa5bc;
 }
 
-.nav-item-top{
-    margin-left: 2vw;
-    padding-top: 3vh
-}
-#nav-top-login{
-    padding-left: 43vw;
-    
-
-}
-a{
-    text-decoration: none;
-    color:black
-}
-li{
-    list-style:none;
-    
+#nav-top-flex {
+  display: flex;
+  flex-direction: row;
 }
 
-#nav-bot-flex{
-    display: flex;
-    flex-direction: row;
-    height: 6vh;
-    
+.nav-item-top {
+  margin-left: 2vw;
+  padding-top: 3vh;
 }
-.nav-item-bot{
- display:block;
- float:left;   
- width:100px;
- color:black;
- text-decoration:none;
- text-align:center;
- padding:5px;
+#nav-top-login {
+  padding-left: 43vw;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+li {
+  list-style: none;
+  
+}
+
+#nav-bot-flex {
  
-
 }
-.nav-item-search{
-    padding-left: 40vw;
-    
+.nav-item-bot {
+  display: block;
+  float: left;
+  width: 100px;
+  color: black;
+  text-decoration: none;
+  
+  padding: 8px;
 }
-a:link{
-    text-decoration: none;
+.nav-item-search {
+  padding-left: 70vw;
 }
-ul{
-    margin-top: 3px;
+a:link {
+  text-decoration: none;
 }
-
+ul {
+  margin-top: 3px;
+}
 
 /********************************/
 /******  Nav Bar ***************/
 /******************************/
-
 
 /********************************/
 /******  Card article **********/
 /******************************/
 
 .card {
-    background: #fff;
-    border-radius: 2px;
-    display: inline-block;
-    height: 300px;
-    margin: 1rem;
-    position: relative;
-    width: 300px;
-  }
-    
-  .card-4:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  }
-  
-  .card-4 {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  }
-  
- 
-  
+  background: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  height: 300px;
+  margin: 1rem;
+  position: relative;
+  width: 300px;
+}
+
+.card-4:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.card-4 {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
 
 /********************************/
 /******  Card article **********/
