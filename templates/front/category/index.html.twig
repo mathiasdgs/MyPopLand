@@ -4,4 +4,20 @@
 
 {% block content %}
 <h1> Collections </h1>
+
+ {% for category in categories %}
+            
+            <div class="card">
+               <h3> {{ category.title }}</h3>
+                
+                
+                    <a href="{{ path('category_showFront', {'id': category.id}) }}">show</a>
+            </div>     
+                
+            
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
 {% endblock %}

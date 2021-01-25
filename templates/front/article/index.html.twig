@@ -8,21 +8,26 @@
 		Figurines
 	</h1>
 
-	{% for article in articles %} 
+	{% for article in articles %}
 
-	<div class="card card-4">
-		
-        <h1> {{ article.title }} </h1>
-		<p> {{ article.image }} </p>
-		<p>{{ article.createdAt ? article.createdAt|date('d-m-Y H:i:s') : '' }}</p>
+		<div class="card card-4">
 
-	</div>
-    
+			<h3>
+				{{ article.title }}
+			</h3>
+			{% if article.image %}
+				<img class="photo_pop" src="{{ article.image | url }}">
+			{% endif %}
+			<p> {{ article.category }}
+			<p>{{ article.createdAt ? article.createdAt|date('d-m-Y H:i:s') : '' }}</p>
 
-{% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
+		</div>
+
+
+	{% else %}
+		<tr>
+			<td colspan="8">no records found</td>
+		</tr>
+	{% endfor %}
 
 {% endblock %}

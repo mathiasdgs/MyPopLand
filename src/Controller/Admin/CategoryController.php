@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/", name="admin/category_index", methods={"GET"})
+     * @Route("/", name="/admin/category_index", methods={"GET"})
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -72,7 +72,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('category_index');
         }
 
-        return $this->render('category/edit.html.twig', [
+        return $this->render('admin/category/edit.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
         ]);

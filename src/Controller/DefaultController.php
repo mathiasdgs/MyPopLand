@@ -20,6 +20,21 @@ class DefaultController extends AbstractController
         ]);
     }
 
+       /**
+         * @Route("/admin/macollection", name="macollection")
+         * @return Response
+        */
+    public function macollectionAction()
+    {
+         return $this->render('admin/macollection.html.twig');
+    }
      
-  
+      /**
+         * @Route("/admin/moncompte", name="moncompte")
+         * @return Response
+        */
+        public function moncompteAction()
+        {
+             return $this->render('admin/moncompte.html.twig');
+        }
 }

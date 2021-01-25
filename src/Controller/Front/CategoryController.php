@@ -16,21 +16,42 @@ class CategoryController extends AbstractController
     /**
      * @Route("/", name="category_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(CategoryRepository $categoryRepository): Response
     {
         return $this->render('front/category/index.html.twig', [
-            'controller_name' => 'CategoryController',
-        ]);
-    }
-
-    /**
-     * @Route("/", name="category_indexFront", methods={"GET"})
-     */
-    public function indexfront(CategoryRepository $categoryRepository): Response
-    {
-        return $this->render('front_office/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
+  /**
+     * @Route("/{id}", name="category_showFront", methods={"GET"})
+     */
+    public function show(category $category, ArticleRepository $articleRepository ): Response
+    {
+        $articles = $articleRepository->findBy(
+            ['category' => $category->getId()],
+            ['created_at' => 'DESC'],
+
+        );
+
+        return $this->render('front/category/show.html.twig', [
+            'category' => $category,
+            'articles' => $articles
+        ]);
+    }
+
+    
+
+
+    /**
+     * @Route("/", name="category_showFront")
+     */
+    public function indexcatfront(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('front/category/index.html.twig', [
+            'categories' => $categoryRepository->findAll(),
+        ]);
+    }
+      
+    
 
 }

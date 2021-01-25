@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 use DateTime;
 /**
  * @Route("/admin/article")
@@ -35,6 +37,23 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $images = $form->get('images')->getData();
+            foreach($images as $image){
+                if($images!= null){
+            // On génère un nouveau nom de fichier
+            $fichier = md5(uniqid()).'.'.$image->guessExtension();
+
+            // On copie le fichier dans le dossier uploads
+            $image->move(
+                $this->getParameter('images_directory'),
+                $fichier);
+                $article->setImage($fichier);
+                } 
+            }
+
+
+
             $article->setCreatedAt(new DateTime());
             
             $entityManager = $this->getDoctrine()->getManager();
@@ -69,6 +88,23 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $images = $form->get('images')->getData();
+            foreach($images as $image){
+                if($images!= null){
+            // On génère un nouveau nom de fichier
+            $fichier = md5(uniqid()).'.'.$image->guessExtension();
+
+            // On copie le fichier dans le dossier uploads
+            $image->move(
+                $this->getParameter('images_directory'),
+                $fichier);
+                $article->setImage($fichier);
+            } 
+        }
+
+
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('article_index');
