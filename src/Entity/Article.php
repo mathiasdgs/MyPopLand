@@ -34,30 +34,32 @@ class Article
      */
     private $created_at;
 
-  
-
-    
     /**
      * @ORM\OneToMany(targetEntity=Rate::class, mappedBy="article")
      */
-    private $rate;
+    private $rates;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="articles")
      */
-    private $user;
+    private $users;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $rateAverage;
+
+
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
-        
-        $this->user = new ArrayCollection();
-        
+        $this->rates = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -101,30 +103,43 @@ class Article
         return $this;
     }
 
-    public function getRate(): ?Rate
+     /**
+     * @return Collection|Rate[]
+     */
+    public function getRates(): Collection
     {
-        return $this->rate;
+        return $this->rates;
     }
 
-    public function setRate(?Rate $rate): self
+    public function addRate(Rate $rate): self
     {
-        $this->rate = $rate;
+        if (!$this->rates->contains($rate)) {
+            $this->rates[] = $rate;
+        }
 
         return $this;
     }
 
+    public function removeRate(Rate $rate): self
+    {
+        $this->rates->removeElement($rate);
+
+        return $this;
+    }
+
+
     /**
      * @return Collection|User[]
      */
-    public function getUser(): Collection
+    public function getUsers(): Collection
     {
-        return $this->user;
+        return $this->users;
     }
 
     public function addUser(User $user): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
         }
 
         return $this;
@@ -132,7 +147,7 @@ class Article
 
     public function removeUser(User $user): self
     {
-        $this->user->removeElement($user);
+        $this->users->removeElement($user);
 
         return $this;
     }
@@ -154,6 +169,18 @@ class Article
         return $this->title;
         // to show the id of the Category in the select
         // return $this->id;
+    }
+
+    public function getRateAverage(): ?float
+    {
+        return $this->rateAverage;
+    }
+
+    public function setRateAverage(?float $rateAverage): self
+    {
+        $this->rateAverage = $rateAverage;
+
+        return $this;
     }
 
     

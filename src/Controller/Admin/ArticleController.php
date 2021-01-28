@@ -13,22 +13,22 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use DateTime;
 /**
- * @Route("/admin/article")
+ * @Route("/admin/article", name="admin_article_")
  */
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/", name="/admin/article_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(ArticleRepository $articleRepository): Response
     {
-        return $this->render('article/index.html.twig', [
+        return $this->render('/admin/article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="article_new", methods={"GET","POST"})
+     * @Route("/new", name="new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -52,35 +52,33 @@ class ArticleController extends AbstractController
                 } 
             }
 
-
-
             $article->setCreatedAt(new DateTime());
             
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
 
-            return $this->redirectToRoute('article_index');
+            return $this->redirectToRoute('admin_article_index');
         }
 
-        return $this->render('article/new.html.twig', [
+        return $this->render('/admin/article/new.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="article_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(Article $article): Response
     {
-        return $this->render('article/show.html.twig', [
+        return $this->render('/admin/article/show.html.twig', [
             'article' => $article,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Article $article): Response
     {
@@ -103,21 +101,19 @@ class ArticleController extends AbstractController
             } 
         }
 
-
-
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('article_index');
+            return $this->redirectToRoute('admin_article_index');
         }
 
-        return $this->render('article/edit.html.twig', [
+        return $this->render('/admin/article/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="article_delete", methods={"DELETE"})
+     * @Route("/{id}", name="delete", methods={"DELETE"})
      */
     public function delete(Request $request, Article $article): Response
     {
@@ -127,6 +123,8 @@ class ArticleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('article_index');
+        return $this->redirectToRoute('admin_article_index');
     }
+
+    
 }

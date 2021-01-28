@@ -44,9 +44,9 @@ class User implements UserInterface
     private $pseudo;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Rate::class, inversedBy="user")
+     * @ORM\OneToMany(targetEntity=Rate::class, mappedBy="user")
      */
-    private $rate;
+    private $rates;
 
     /**
      * @ORM\Column(type="boolean")
@@ -54,13 +54,14 @@ class User implements UserInterface
     private $isVerified = false;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="user")
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="users")
      */
     private $articles;
 
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->rates = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,17 +178,30 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRate(): ?Rate
+    /**
+     * @return Collection|Rate[]
+     */
+    public function getRates(): Collection
     {
-        return $this->rate;
+        return $this->rates;
     }
 
-    public function setRate(?Rate $rate): self
+    public function addRate(Rate $rate): self
     {
-        $this->rate = $rate;
+        if (!$this->rates->contains($rate)) {
+            $this->rates[] = $rate;
+        }
 
         return $this;
     }
+
+    public function removeRate(Rate $rate): self
+    {
+        $this->rates->removeElement($rate);
+
+        return $this;
+    }
+
 
     public function isVerified(): bool
     {

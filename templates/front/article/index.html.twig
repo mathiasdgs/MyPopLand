@@ -2,32 +2,25 @@
 
 {% block title %}Article
 {% endblock %}
-
 {% block content %}
 	<h1>
 		Figurines
 	</h1>
-
 	{% for article in articles %}
-
 		<div class="card card-4">
-
-			<h3>
-				{{ article.title }}
-			</h3>
 			{% if article.image %}
+			<p>Collection: {{ article.category }}</p>
+			
 				<img class="photo_pop" src="{{ article.image | url }}">
 			{% endif %}
-			<p> {{ article.category }}
-			<p>{{ article.createdAt ? article.createdAt|date('d-m-Y H:i:s') : '' }}</p>
+			<h4>{{ article.title }}</h4>
 
+			<p>{{ article.rateAverage }}</p>
+			<a id="lien_article" href="{{ path('article_showFront', {'id': article.id}) }}">Voir la figurine</a>
 		</div>
-
-
 	{% else %}
 		<tr>
 			<td colspan="8">no records found</td>
 		</tr>
 	{% endfor %}
-
 {% endblock %}

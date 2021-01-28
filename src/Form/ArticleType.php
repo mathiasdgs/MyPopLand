@@ -20,7 +20,7 @@ class ArticleType extends AbstractType
                 'required' => false
             ])
             ->add('created_at')
-            ->add('user')
+            ->add('users')
             ->add('category')
         ;
     }

@@ -38,10 +38,6 @@ class CategoryController extends AbstractController
             'articles' => $articles
         ]);
     }
-
-    
-
-
     /**
      * @Route("/", name="category_showFront")
      */
@@ -51,7 +47,4 @@ class CategoryController extends AbstractController
             'categories' => $categoryRepository->findAll(),
         ]);
     }
-      
-    
-
 }

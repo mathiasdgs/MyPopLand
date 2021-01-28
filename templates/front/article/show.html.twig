@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block content %}
+    <div class="show_article">
+    <h1>{{ id.title }}</h1>
+    <img class="photo_pop "  src="{{ id.image | url }}">
+    <p> Figurine pop de la collection: <p id="article_show_collection">{{ id.category }}</p> </p>
+    </br>
+    <div id="show_star">
+<p>Les utilisateurs lui ont attribué la NOTE de <p id="star"> {{ id.rateAverage }}/5 ★</p> </p>
+</div>
+</div>
+
+<p> Cette article est disponible sur <a id="lien_article" href="https://www.amazon.fr/">Amazon</a> </p>
+    <a href="{{ path('article_index') }}">Revenir sur la page des figurines</a>
+ 
+{% endblock %}

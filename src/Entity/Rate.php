@@ -25,20 +25,16 @@ class Rate
     private $note;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="rate")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="rates")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="rate")
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="rates")
      */
     private $article;
 
-    public function __construct()
-    {
-        $this->user = new ArrayCollection();
-        $this->article = new ArrayCollection();
-    }
+   
 
     public function getId(): ?int
     {
@@ -57,62 +53,26 @@ class Rate
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUser(): Collection
+    public function getUser(): ?User 
     {
         return $this->user;
     }
 
-    public function addUser(User $user): self
+    public function setUser(?User $user): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-            $user->setRate($this);
-        }
+        $this->user = $user;
 
         return $this;
     }
 
-    public function removeUser(User $user): self
-    {
-        if ($this->user->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getRate() === $this) {
-                $user->setRate(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Article[]
-     */
-    public function getArticle(): Collection
+    public function getArticle(): ?Article 
     {
         return $this->article;
     }
 
-    public function addArticle(Article $article): self
+    public function setArticle(?Article $article): self
     {
-        if (!$this->article->contains($article)) {
-            $this->article[] = $article;
-            $article->setRate($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArticle(Article $article): self
-    {
-        if ($this->article->removeElement($article)) {
-            // set the owning side to null (unless already changed)
-            if ($article->getRate() === $this) {
-                $article->setRate(null);
-            }
-        }
+        $this->article = $article;
 
         return $this;
     }

@@ -1,10 +1,42 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}Accueil 
+{% endblock %}
 
 {% block content %}
-<h1> Les nouveautés </h1>
-<div> </div>
-<h2>Collections </h2>
-<div> </div>
+</br>
+	<h1>
+		Les derniers ajout  
+	</h1>
+	{% for article in articles %}
+		<div class="card card-4">
+			{% if article.image %}
+			<p>Collection: {{ article.category }}</p>
+			
+				<img class="photo_pop" src="{{ article.image | url }}">
+			{% endif %}
+			<h4>{{ article.title }}</h4>
+			<p>{{ article.rateAverage }}</p>
+		</div>
+	{% else %}
+		<tr>
+			<td colspan="8">no records found</td>
+		</tr>
+	{% endfor %}
+</br>
+</br>
+</br>
+	<h1>Collections</h1>
+	{% for category in categories %}
+		<div class="card-categ">
+			<img class="photo_coll" src="{{ asset('/images/'~category.image) }}">
+			<h3>
+				{{ category.title }}</h3>
+			<a class="btn_show" href="{{ path('category_showFront', {'id': category.id}) }}">Voir la collection</a>
+		</div>
+	{% else %}
+		<tr>
+			<td colspan="4">no records found</td>
+		</tr>
+	{% endfor %}
 {% endblock %}
