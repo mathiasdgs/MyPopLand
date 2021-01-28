@@ -9,7 +9,7 @@
 		Les derniers ajout  
 	</h1>
 	{% for article in articles %}
-		<div class="card card-4">
+		<div class="card card-4 article">
 			{% if article.image %}
 			<p>Collection: {{ article.category }}</p>
 			
@@ -28,7 +28,7 @@
 </br>
 	<h1>Collections</h1>
 	{% for category in categories %}
-		<div class="card-categ">
+		<div class="card-categ article">
 			<img class="photo_coll" src="{{ asset('/images/'~category.image) }}">
 			<h3>
 				{{ category.title }}</h3>

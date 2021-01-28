@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}Categories
 {% endblock %}
@@ -6,7 +6,7 @@
 {% block content %}
 	<h1>Collections</h1>
 	{% for category in categories %}
-		<div class="card-categ">
+		<div class="card-categ article">
 			<img class="photo_coll" src="{{ asset('/images/'~category.image) }}">
 			<h3>
 				{{ category.title }}</h3>

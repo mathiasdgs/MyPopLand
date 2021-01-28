@@ -9,3 +9,7 @@
         
     {% endblock %}   
 {% endblock %}
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="{{asset('js/search.js')}}"></script>
+{% endblock %}

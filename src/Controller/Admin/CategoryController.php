@@ -120,6 +120,6 @@ class CategoryController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_category_index');
+        return $this->redirectToRoute('admin/category_index');
     }
 }
