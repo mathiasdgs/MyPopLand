@@ -49,7 +49,7 @@ class ArticleController extends AbstractController
         );
         
         return $this->render('front/article/show.html.twig', [
-            // 'category' => $category,
+           
             'id' => $article,
         ]);
     }

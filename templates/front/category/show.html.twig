@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block content %}
+    {# <h1>{{ id.title }}</h1>
+    <img class=""  src="{{ id.image | url }}"> #}
+
+    
+ 	<h3>{{ category.title }}</h3>
+     {% for article in category.articles %}
+     <p> {{ article.title }}</p>
+     <img class="photo_pop" src="{{ article.image | url }}">
+     {% endfor %}
+ 
+{% endblock %}

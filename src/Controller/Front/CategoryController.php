@@ -47,4 +47,16 @@ class CategoryController extends AbstractController
             'categories' => $categoryRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="category_showFront", methods={"GET"})
+     */
+    public function showcat(Category $category): Response
+    {
+
+        return $this->render('front/category/show.html.twig', [
+            'articles' => $category->getArticles(),
+            'category' => $category
+        ]);
+    }
 }

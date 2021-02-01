@@ -21,6 +21,7 @@ class Rate
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * 
      */
     private $note;
 

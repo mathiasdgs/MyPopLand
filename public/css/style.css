@@ -1,48 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
 /********************************/
 /******  Nav Bar ***************/
 /******************************/
-
-@import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap");
-
 .nav-content {
-  background-color: #3e4955;
+  background: linear-gradient(#3e4955, #405e7c);
+  box-shadow:#405e7c 4px;
 }
-
 .nav-title {
-  font-family: "Skranji", cursive;
+  font-family: "Skranji", cursive; 
+  text-align: center;
   font-size: 3em;
   color: white;
   text-shadow: black 3px 3px 2px;
   text-decoration: none;
-  padding-left: 1vw;
   margin-top: 2vh;
+  width: 100%;
+  
 }
 #nav-title-logo {
   width: 6vw;
   height: 6vh;
-  padding-left: 2vw;
+  margin-left: 6vw;
   margin-top: 4vh;
   border-radius: 70%;
 }
 .nav-bot {
-  background-color: #8fa5bc;
+  background-color: #e0e0e0;
+  width: 100%;
+  border-radius: 1%;
 }
-
 #nav-top-flex {
   display: flex;
   flex-direction: row;
 }
-
 .nav-item-top {
-  margin-left: 2vw;
-  padding-top: 3vh;
+  margin-left: 1vw;
+  margin-top: 3vh;
+  margin-right: 0.4vw;
 }
-#nav-top-login {
-  padding-left: 43vw;
-}
+
 a {
   text-decoration: none;
   color: black;
+}
+a:hover{
+  color: #2980B9;
 }
 li {
   list-style: none;
@@ -51,18 +54,16 @@ li {
 .nav-item-top:hover{
   color: white;
 }
-
-
 .nav-item-bot {
   display: block;
   float: left;
-  width: 100px;
+  width: 140px;
   color: black;
   text-decoration: none;
-  padding: 8px;
+  margin: 7px;
 }
 .nav-item-search {
-  padding-left: 70vw;
+  margin-left: 70vw;
 }
 a:link {
   text-decoration: none;
@@ -88,12 +89,10 @@ ul {
   margin-left: 1vw;
   text-align: center;
   margin-top: 3vh;
-  
+  border-radius: 5%;
 }
-
 .card-4 {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); 
 }
 .card-categ {
   background: #fff;
@@ -113,12 +112,11 @@ ul {
 
 
 /********************************/
-/****** photo pop **********/
+/****** photo pop **************/
 /******************************/
 .photo_pop{
   width: 55%;
   height: 50%;
-  
 }
 .photo_coll{
   width:100%;
@@ -135,8 +133,13 @@ ul {
 .show_article{
   text-align: center;
 }
+/********************************/
+/****** photo pop **************/
+/******************************/
 
-/*structure*/
+/********************************/
+/******* Structure *************/
+/******************************/
 body{
   background-color: #eeeeee;
   margin: 0;
@@ -145,15 +148,18 @@ body{
   background-repeat:no-repeat;
   background-size: cover;
 }
+
+
 h1{
   text-align: center;
+  font-family: "Skranji", cursive; 
+
 }
 #star{
   color: #ffd800;
   font-size: 2em;
 }
 #show_star{
-  
   border: solid 1px black;
   width: 30vw;
   text-align: center;
@@ -165,10 +171,192 @@ h1{
 #article_show_collection{
   color: #972401;
 }
-/*structure*/
-
-
 .btn_show:hover{
-color: #3e4955;
-  
+color: #3e4955; 
 } 
+/********************************/
+/******  Structure *************/
+/******************************/
+
+/********************************/
+/****** Formulaire *************/
+/******************************/
+
+.form_style_form{
+background:transparent;
+width: 250px;padding: 1em;
+margin-bottom: 2em;border: none;
+color: black;
+font-weight: 500;
+transition: all 0.2 ease-in-out;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+margin-top:3vh ;
+}
+#registration_form_email, #registration_form_plainPassword, #registration_form_pseudo{
+  border: none;
+  border-bottom: solid 2px grey;
+  background:transparent;
+  margin: 3vh;
+  color: grey;
+}
+.container{
+  position: relative;
+  height: 100vh;
+  font-family:arial,sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img_register{
+  height: 60vh;
+  width: 19vw;
+  margin-right: 10vw;
+}
+
+.btn{
+  padding: 10px 40px;
+  border-radius: 10px;
+  font-size: 25px;
+  font-family: "Skranji", cursive;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #3498D8;
+  border-bottom:5px solid #2980B9;
+  text-shadow: 0px -2px #2980B9;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+
+/**inscription**/
+
+.btn_sub_log{
+  padding: 10px 40px;
+  border-radius: 10px;
+  font-size: 25px;
+  font-family: "Skranji", cursive;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #3498D8;
+  border-bottom:5px solid #2980B9;
+  text-shadow: 0px -2px #2980B9;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+.btn_sub_log:active{
+transform: translate(0px,5px);
+-webkit-transform: translate(Opx,5px);
+border-bottom: 1px solid;
+}
+
+
+#inputEmail, #inputPassword{
+  border: none;
+  border-bottom: solid 2px grey;
+  background:transparent;
+  margin: 3vh;
+  color: grey;
+}
+.content_img_log{
+  display: flex;
+  justify-content: center;
+  margin-top: 4vh;
+}
+.form_log{
+  display: flex;
+  justify-content: center;
+}
+.mdp_log{
+  float: right;
+  margin-top: 2vh;
+}
+.mdp_log:hover{
+  color: #3e4955;
+}
+.img_log{
+  height: 60vh;
+  width: 19vw;
+  
+}
+.form_email{
+  margin-right:3vw;
+}
+
+/*****form article*****/
+.form_style_article{
+  border: none;
+  width: 250px;
+  padding: 1em;
+  margin-bottom: 2em;border: none;
+  background:transparent;
+  margin: 3vh;
+  color: grey;
+  margin-left: 20vw;
+  
+}
+#article_title{
+  margin: 3vh;
+  border: none;
+  border-bottom: solid 2px grey;
+  background:transparent;
+}
+
+#article_images{
+  margin: 3vh;
+  color: grey;
+
+}
+input #article_images{
+  border: none;
+  border-bottom: solid 2px grey;
+  background:transparent;
+  margin: 3vh;
+  color: grey;
+}
+
+.btn_article{
+  padding: 10px 40px;
+  border-radius: 10px;
+  font-size: 25px;
+  font-family: "Skranji", cursive;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #3498D8;
+  border-bottom:5px solid #2980B9;
+  text-shadow: 0px -2px #2980B9;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  margin-left: 23vw;
+
+}
+
+#article_category{
+  margin: 3vh;
+}
+#new_article_content{
+  display: flex;
+  flex-direction: row;
+}
+.img_addpop{
+  height: 60vh;
+  width: 19vw;
+  position: absolute;
+  margin-left: 15vw;
+  margin-top: 5vh;
+  
+}
+.btn_add_pop{
+  float: right;
+  margin-right: 5vw;
+}
+/********************************/
+/****** Formulaire *************/
+/******************************/
+
+
+
+
+/* rate */
+.checked {
+  color: orange;
+}

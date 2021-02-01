@@ -1,19 +1,21 @@
 <nav class="nav-content">
-
-
     <div id="nav-top">
         <div id="nav-top-flex">
-        <img id="nav-title-logo" src="{{asset ('images/logoplanete.png')}}" alt="Logo-planete-MyPopLand">
-        <a class="nav-title" href="/"> - MypopLand</a>
-         <li class="nav-item-top">
-         
-                        <a id="nav-top-login" class="nav-link-top" href="{{ path('app_login') }}">Se connecter</a>
+           <a href="/"> <img id="nav-title-logo" src="{{asset ('images/logoplanete.png')}}" alt="Logo-planete-MyPopLand"></a>
+            <a class="nav-title" href="/"> MypopLand</a>
+            <li class="nav-item-top">
+            {% if  is_granted('ROLE_USER') %}
+           <a href="{{ path('moncompte') }}"> <li id="nav-top-login" class="nav-item-top">{{app.user.pseudo}}</li></a>
+            <li class="nav-item-top"><a href="{{ path('app_logout') }}">Déconnection</a></li>
+            {% else  %}
+                    <a id="nav-top-login" class="nav-link-top" href="{{ path('app_login') }}">Connection</a>
                     </li>
                         </br>
                     </li>
                     <li class="nav-item-top">
                         <a class="nav-link-top" href="{{ path('app_register') }}">Inscription</a>
-                    </li>
+                    </li>                  
+        {% endif %}
         </div>            
     </div>    
             <div class="nav-bot" id="">
@@ -46,13 +48,10 @@
                         <a class="nav-link-bot" href="{{ path('admin_article_new') }}">Ajouter une pop</a>
                     </li>
 
- {% endif %}
-
-                   
+ {% endif %}               
                 </ul>
                 <form class="nav-item-search">
-                    <input id="search-input" class="form-control" type="search" placeholder="Rechercher..." aria-label="Search">
-{# <button id="btn-search" type="submit">🔍</button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                #}
+                    <input id="search-input" class="form-control" type="search" placeholder="Rechercher...                                    🔍" aria-label="Search">
                 </form>
         </div>        
     </div>                                                                                                                          
