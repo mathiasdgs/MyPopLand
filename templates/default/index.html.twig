@@ -13,7 +13,7 @@
 			{% if article.image %}
 			<p>Collection: {{ article.category }}</p>
 			
-			<a href="{{ path('article_showFront', {'id': article.id}) }}">	<img class="photo_pop" src="{{ article.image | url }}"></a>
+			<a href="{{ path('article_showFront', {'id': article.id}) }}">	<img class="photo_pop" src="{{ article.image | url }}" title=" Voir la figurine"></a>
 			{% endif %}
 			<h4>{{ article.title }}</h4>
 			<p>{{ article.rateAverage }} /5 ★</p>
@@ -29,10 +29,9 @@
 	<h1>Collections</h1>
 	{% for category in categories %}
 		<div class="card-categ article">
-		<a href="{{ path('category_showFront', {'id': category.id}) }}"><img class="photo_coll" src="{{ asset('/images/'~category.image) }}"></a>
+		<a href="{{ path('category_showFront', {'id': category.id}) }}"><img class="photo_coll" src="{{ asset('/images/'~category.image) }}"title=" Voir la collection"></a>
 			<h3>
 				{{ category.title }}</h3>
-			<a class="btn_show" href="{{ path('category_showFront', {'id': category.id}) }}">Voir la collection</a>
 		</div>
 	{% else %}
 		<tr>

@@ -4,21 +4,26 @@
 
 {% block content %}
 
-<div class="example-wrapper">
 <h1> Mon compte </h1>
+<div class="content_mcpt">
 
-                    <li class="">
-                        <a class="" href="{{ path('macollection') }}">Ma Collection</a>
+                    <li class="btn_mcpt">
+                        <a class="btn_mcpt" href="{{ path('macollection') }}">Ma Collection</a>
                     </li>
 
-                    <li class="">
-                        <a href="{{ path('app_forgot_password_request') }}">Changer de mot de passe ?  </a>
+                    <li class="btn_mcpt">
+                        <a class="btn_mcpt" href="{{ path('app_forgot_password_request') }}">Changer de mot de passe ?  </a>
                     </li>
 
-                    <li class="">
-                        <a class="" href="{{ path('admin_article_new') }}">Ajouter une pop</a>
+                    <li class="btn_mcpt  ">
+                        <a class="btn_mcpt" href="{{ path('admin_article_new') }}">Ajouter une pop</a>
                     </li>
 
-
+</div>
+<div class="content_mcpt_bot">
+</div>
+<div class="img_mcpt_bot">
+<img src="{{asset ('images/shazam.jpg')}}" class="img_mcpt_bot img_pad">
+<img src="{{asset ('images/darkshaz.jpg')}}" class="img_mcpt_bot">
 </div>
 {% endblock %}

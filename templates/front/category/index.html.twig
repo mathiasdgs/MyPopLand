@@ -7,10 +7,8 @@
 	<h1>Collections</h1>
 	{% for category in categories %}
 		<div class="card-categ article">
-			<a href="{{ path('category_showFront', {'id': category.id}) }}"><img class="photo_coll" src="{{ asset('/images/'~category.image) }}"></a>
-			<h3>
-				{{ category.title }}</h3>
-			<a class="btn_show" href="{{ path('category_showFront', {'id': category.id}) }}">Voir la collection</a>
+			<a href="{{ path('category_showFront', {'id': category.id}) }}"><img class="photo_coll" src="{{ asset('/images/'~category.image) }}" title=" Voir la collection"></a>
+			<h3>{{ category.title }}</h3>
 		</div>
 	{% else %}
 		<tr>

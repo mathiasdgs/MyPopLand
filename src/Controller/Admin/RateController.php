@@ -103,4 +103,7 @@ class RateController extends AbstractController
 
         return $this->redirectToRoute('admin_rate_index');
     }
+
+    
 }
+

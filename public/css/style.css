@@ -1,22 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+/* @import url("https://fonts.googleapis.com/css2?family=Skranji&display=swap"); */
+/* @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Skranji&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300&family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300&family=Dancing+Script&family=Indie+Flower&display=swap');
 /********************************/
 /******  Nav Bar ***************/
 /******************************/
+
 .nav-content {
-  background: linear-gradient(#3e4955, #405e7c);
+  /* background: linear-gradient(#3e4955, #405e7c); */
   box-shadow:#405e7c 4px;
 }
 .nav-title {
   font-family: "Skranji", cursive; 
   text-align: center;
   font-size: 3em;
-  color: white;
+  color: #2980B9;;
   text-shadow: black 3px 3px 2px;
   text-decoration: none;
   margin-top: 2vh;
   width: 100%;
+  margin-left: 7vw;
   
+}
+.nav-link-bot{
+    /* font-family: "Skranji", cursive;  */
+    /* font-family: 'Big Shoulders Display', cursive; */
+  font-size: 1.2em;
+  font-family: 'Big Shoulders Display', cursive;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Indie Flower', cursive;
+  
+
+}
+p{
+  font-family: 'Big Shoulders Display', cursive;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.2em;
 }
 #nav-title-logo {
   width: 6vw;
@@ -26,9 +48,11 @@
   border-radius: 70%;
 }
 .nav-bot {
-  background-color: #e0e0e0;
+  /* background-color: #e0e0e0; */
   width: 100%;
   border-radius: 1%;
+  
+  border-bottom: solid 1px #a8a8a8;
 }
 #nav-top-flex {
   display: flex;
@@ -76,6 +100,8 @@ ul {
 /******  Nav Bar ***************/
 /******************************/
 
+/*****************************/
+
 /********************************/
 /******  Card article **********/
 /******************************/
@@ -110,9 +136,10 @@ ul {
 /******  Card article **********/
 /******************************/
 
+/*****************************/
 
 /********************************/
-/****** photo pop **************/
+/****** photo pop/collec *******/
 /******************************/
 .photo_pop{
   width: 55%;
@@ -137,9 +164,11 @@ ul {
 /****** photo pop **************/
 /******************************/
 
-/********************************/
-/******* Structure *************/
-/******************************/
+/*****************************/
+
+/*****************************/
+/******* Structure **********/
+/***************************/
 body{
   background-color: #eeeeee;
   margin: 0;
@@ -178,6 +207,8 @@ color: #3e4955;
 /******  Structure *************/
 /******************************/
 
+/*****************************/
+
 /********************************/
 /****** Formulaire *************/
 /******************************/
@@ -214,10 +245,10 @@ margin-top:3vh ;
   margin-right: 10vw;
 }
 
-.btn{
-  padding: 10px 40px;
+.btn_mcpt{
+  padding: 10px 10px;
   border-radius: 10px;
-  font-size: 25px;
+  font-size: 1em;
   font-family: "Skranji", cursive;
   color: #ffffff;
   text-decoration: none;
@@ -231,9 +262,22 @@ margin-top:3vh ;
 /**inscription**/
 
 .btn_sub_log{
-  padding: 10px 40px;
+  padding: 10px 10px;
   border-radius: 10px;
-  font-size: 25px;
+  font-size: 1em;
+  font-family: "Skranji", cursive;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #3498D8;
+  border-bottom:5px solid #2980B9;
+  text-shadow: 0px -2px #2980B9;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+.btn_reg{
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-size: 1em;
   font-family: "Skranji", cursive;
   color: #ffffff;
   text-decoration: none;
@@ -247,6 +291,16 @@ margin-top:3vh ;
 transform: translate(0px,5px);
 -webkit-transform: translate(Opx,5px);
 border-bottom: 1px solid;
+}
+.btn_reg:active{
+  transform: translate(0px,5px);
+-webkit-transform: translate(Opx,5px);
+border-bottom: 1px solid;
+}
+.btn_mcpt:active{
+  transform: translate(0px,5px);
+  -webkit-transform: translate(Opx,5px);
+  border-bottom: 1px solid;
 }
 
 
@@ -265,6 +319,7 @@ border-bottom: 1px solid;
 .form_log{
   display: flex;
   justify-content: center;
+  margin-top: 4vh;
 }
 .mdp_log{
   float: right;
@@ -282,7 +337,10 @@ border-bottom: 1px solid;
   margin-right:3vw;
 }
 
-/*****form article*****/
+/********************************/
+/****** Form Article* **********/
+/******************************/
+
 .form_style_article{
   border: none;
   width: 250px;
@@ -315,9 +373,9 @@ input #article_images{
 }
 
 .btn_article{
-  padding: 10px 40px;
+  padding: 10px 30px;
   border-radius: 10px;
-  font-size: 25px;
+  font-size: 1em;
   font-family: "Skranji", cursive;
   color: #ffffff;
   text-decoration: none;
@@ -328,6 +386,11 @@ input #article_images{
   -webkit-transition: all 0.1s;
   margin-left: 23vw;
 
+}
+.btn_article:active{
+  transform: translate(0px,5px);
+  -webkit-transform: translate(Opx,5px);
+  border-bottom: 1px solid;
 }
 
 #article_category{
@@ -349,14 +412,100 @@ input #article_images{
   float: right;
   margin-right: 5vw;
 }
+
+/********************************/
+/****** Form Article* **********/
+/******************************/
+
+/*****************************/
+
+/********************************/
+/****** Formulaire *************/
+/******************************/
+
+.content_mcpt{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
+  margin-top: 8vh;
+}
+.img_mcpt_bot{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  height: 60vh;
+  width: 19vw;
+  margin-top: 4vh;
+  
+}
+.img_pad{
+  margin-left: 32vw;
+  
+}
 /********************************/
 /****** Formulaire *************/
 /******************************/
 
 
+/********************************/
+/****** Category show **********/
+/******************************/
 
+.category_show_content{
+  margin-left: 30vw;
+}
+/********************************/
+/****** Category show **********/
+/******************************/
 
 /* rate */
 .checked {
   color: orange;
+}
+
+.searchBy{
+  display: flex;
+  justify-content: right;
+}
+/***** request mdp ******/
+
+.content_rqst{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  height: 60vh;
+  width: 19vw;
+  margin-top: 4vh;
+}
+.content_form_rqst{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
+  margin-top: 8vh;
+}
+.btn_rqst{
+  padding: 10px 40px;
+  border-radius: 10px;
+  font-size: 25px;
+  font-family: "Skranji", cursive;
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #3498D8;
+  border-bottom:5px solid #2980B9;
+  text-shadow: 0px -2px #2980B9;
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+  margin-left: 23vw;
+  margin-top:3vh;
+}
+
+#reset_password_request_form_email{
+  border: none;
+  border-bottom: solid 2px grey;
+  background:transparent;
+  margin: 3vh;
+  color: grey;
+  
 }

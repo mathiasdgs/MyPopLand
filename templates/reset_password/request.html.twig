@@ -7,7 +7,7 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
     <h1>Changer de mot de passe </h1>
-
+<div class="content_form_rqst">
     {{ form_start(requestForm) }}
         {{ form_row(requestForm.email) }}
         <div>
@@ -16,7 +16,12 @@
             </small>
         </div>
 
-        <button class="btn btn-primary">envoyer</button>
+        <button class="btn_rqst">envoyer</button>
     {{ form_end(requestForm) }}
     <a class="btn_add_pop"  href="{{ path('home') }}">Accueil</a>
+</div>    
+    <div class="content_rqst">
+<img src="{{asset ('images/green.jpeg')}}" class="img_mcpt_bot img_pad">
+<img src="{{asset ('images/greenarrow.jpg')}}" class="img_mcpt_bot">
+</div>
 {% endblock %}

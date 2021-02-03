@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
 
@@ -11,8 +11,8 @@
 
     {% if app.user %}
         <div class="mb-3">
-            Tu es connecté sur {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a></br>
-            <a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ? </a>
+            Tu es connecté sur {{ app.user.pseudo }}</br>
+            
         </div>
     {% endif %}
 
