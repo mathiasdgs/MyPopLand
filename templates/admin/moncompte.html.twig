@@ -6,24 +6,18 @@
 
 <h1> Mon compte </h1>
 <div class="content_mcpt">
-
-                    <li class="btn_mcpt">
-                        <a class="btn_mcpt" href="{{ path('macollection') }}">Ma Collection</a>
-                    </li>
-
-                    <li class="btn_mcpt">
-                        <a class="btn_mcpt" href="{{ path('app_forgot_password_request') }}">Changer de mot de passe ?  </a>
-                    </li>
-
-                    <li class="btn_mcpt  ">
-                        <a class="btn_mcpt" href="{{ path('admin_article_new') }}">Ajouter une pop</a>
-                    </li>
-
-</div>
-<div class="content_mcpt_bot">
+    <li class="btn_mcpt">
+        <a class="btn_mcpt" href="{{ path('collection') }}">Ma Collection</a>
+    </li>
+    <li class="btn_mcpt">
+        <a class="btn_mcpt" href="{{ path('app_forgot_password_request') }}">Changer de mot de passe ?  </a>
+    </li>
+    <li class="btn_mcpt  ">
+        <a class="btn_mcpt" href="{{ path('admin_article_new') }}">Ajouter une pop</a>
+    </li>
 </div>
 <div class="img_mcpt_bot">
-<img src="{{asset ('images/shazam.jpg')}}" class="img_mcpt_bot img_pad">
-<img src="{{asset ('images/darkshaz.jpg')}}" class="img_mcpt_bot">
+    <img src="{{asset ('images/shazam.jpg')}}" class="img_mcpt_bot img_pad">
+    <img src="{{asset ('images/darkshaz.jpg')}}" class="img_mcpt_bot">
 </div>
 {% endblock %}

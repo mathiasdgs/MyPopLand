@@ -24,7 +24,6 @@ class CategoryController extends AbstractController
             'categories' => $categoryRepository->findAll(),
         ]);
     }
-
     /**
      * @Route("/new", name="new", methods={"GET","POST"})
      */
@@ -33,35 +32,27 @@ class CategoryController extends AbstractController
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            
+        if ($form->isSubmitted() && $form->isValid()) {            
             $image = $form->get('images')->getData();
             if($image!= null){
             // On génère un nouveau nom de fichier
-            $fichier = md5(uniqid()).'.'.$image->guessExtension();
-                
+            $fichier = md5(uniqid()).'.'.$image->guessExtension();    
             // On copie le fichier dans le dossier uploads
             $image->move(
                 $this->getParameter('images_directory'),
                 $fichier);
             $category->setImage($fichier);
             }
-            
-
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
             $entityManager->flush();
-
-            return $this->redirectToRoute('admin_category_index');
+        return $this->redirectToRoute('admin_category_index');
         }
-
-        return $this->render('admin/category/new.html.twig', [
+    return $this->render('admin/category/new.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="show", methods={"GET"})
      */
@@ -71,7 +62,6 @@ class CategoryController extends AbstractController
             'category' => $category,
         ]);
     }
-
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
@@ -79,27 +69,18 @@ class CategoryController extends AbstractController
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $image = $form->get('images')->getData();
-            
+            $image = $form->get('images')->getData();            
                 if($image!= null){
             // On génère un nouveau nom de fichier
             $fichier = md5(uniqid()).'.'.$image->guessExtension();
-
             // On copie le fichier dans le dossier uploads
             $image->move(
                 $this->getParameter('images_directory'),
                 $fichier);
             $category->setImage($fichier);
-                } 
-            
-
-
-
+            } 
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('admin_category_index');
         }
 
@@ -108,7 +89,6 @@ class CategoryController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="delete", methods={"DELETE"})
      */
@@ -119,7 +99,6 @@ class CategoryController extends AbstractController
             $entityManager->remove($category);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('admin/category_index');
     }
 }

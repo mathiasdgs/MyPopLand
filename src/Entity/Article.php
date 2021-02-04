@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Collection as DocCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -54,12 +54,17 @@ class Article
      */
     private $rateAverage;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Collection::class, mappedBy="article")
+     */
+    private $collections;
 
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->rates = new ArrayCollection();
+        $this->collections = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -103,10 +108,10 @@ class Article
         return $this;
     }
 
-     /**
-     * @return Collection|Rate[]
+    /**
+     * @return DocCollection|Rate[]
      */
-    public function getRates(): Collection
+    public function getRates(): DocCollection
     {
         return $this->rates;
     }
@@ -127,11 +132,10 @@ class Article
         return $this;
     }
 
-
     /**
-     * @return Collection|User[]
+     * @return DocCollection|User[]
      */
-    public function getUsers(): Collection
+    public function getUsers(): DocCollection
     {
         return $this->users;
     }
@@ -183,5 +187,30 @@ class Article
         return $this;
     }
 
-    
+    /**
+     * @return DocCollection|Collection[]
+     */
+    public function getCollections(): DocCollection
+    {
+        return $this->collections;
+    }
+
+    public function addCollection(Collection $collection): self
+    {
+        if (!$this->collections->contains($collection)) {
+            $this->collections[] = $collection;
+            $collection->addArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCollection(Collection $collection): self
+    {
+        if ($this->collections->removeElement($collection)) {
+            $collection->removeArticle($this);
+        }
+
+        return $this;
+    }    
 }

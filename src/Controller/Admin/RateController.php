@@ -36,7 +36,6 @@ class RateController extends AbstractController
         $rate = new Rate();
         $form = $this->createForm(RateType::class, $rate);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $articleId = $rate->getArticle()->getId();
             $allRates = $rateRepository->findBy(['article' => $articleId]);
@@ -50,8 +49,7 @@ class RateController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($rate);
             $entityManager->flush();
-
-            return $this->redirectToRoute('admin_rate_index');
+        return $this->redirectToRoute('admin_rate_index');
         }
 
         return $this->render('/admin/rate/new.html.twig', [
@@ -59,7 +57,6 @@ class RateController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="show", methods={"GET"})
      */
@@ -77,19 +74,15 @@ class RateController extends AbstractController
     {
         $form = $this->createForm(RateType::class, $rate);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('admin_rate_index');
         }
-
         return $this->render('/admin/rate/edit.html.twig', [
             'rate' => $rate,
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="delete", methods={"DELETE"})
      */
@@ -100,10 +93,7 @@ class RateController extends AbstractController
             $entityManager->remove($rate);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('admin_rate_index');
-    }
-
-    
+    }    
 }
 

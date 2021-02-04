@@ -11,8 +11,7 @@
 
     {% if app.user %}
         <div class="mb-3">
-            Tu es connecté sur {{ app.user.pseudo }}</br>
-            
+            Tu es connecté sur {{ app.user.pseudo }}</br>     
         </div>
     {% endif %}
 
@@ -33,7 +32,7 @@
 </form>
 </div>
 <div class="content_img_log">
-<img src="{{asset ('images/batman.jpeg')}}" class="img_log">
-<img src="{{asset ('images/joker.jpeg')}}" class="img_log">
+    <img src="{{asset ('images/batman.jpeg')}}" class="img_log">
+    <img src="{{asset ('images/joker.jpeg')}}" class="img_log">
 </div>
 {% endblock %}

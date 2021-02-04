@@ -15,16 +15,15 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title',TextType::class,[
-                'attr' => ['placeholder' => 'Nom de la pop #02']
+                  'attr' => ['placeholder' => 'Nom de la pop #02']
             ])
             ->add('images', Filetype::class,[
-                'label' => false,
-                'multiple' => true,
-                'mapped' => false,
-                'required' => false
+                  'label' => false,
+                  'multiple' => true,
+                  'mapped' => false,
+                  'required' => false
             ])
-            ->add('category')
-        ;
+            ->add('category');
     }
 
     public function configureOptions(OptionsResolver $resolver)

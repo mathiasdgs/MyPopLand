@@ -38,9 +38,7 @@ class Category
     public function __construct()
     {
         $this->articles = new ArrayCollection();
-    }
-
-    
+    }    
     
     public function getId(): ?int
     {
@@ -85,11 +83,8 @@ class Category
                 $article->setCategory(null);
             }
         }
-
         return $this;
     }
-
-   
 
     public function getTitle(): ?string
     {
@@ -108,6 +103,5 @@ class Category
         return $this->title;
         // to show the id of the Category in the select
         // return $this->id;
-    }
-    
+    }    
 }

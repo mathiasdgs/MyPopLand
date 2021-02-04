@@ -19,9 +19,9 @@ class RateController extends AbstractController
     public function index(Request $request, Article $article, RateRepository $rateRepository): Response
     {   
         $rate =  new Rate();
-        $rate->setArticle($article)
-        ->setNote($request->get('note'))
-        ->setUser($this->getUser());
+        $rate   ->setArticle($article)
+                ->setNote($request->get('note'))
+                ->setUser($this->getUser());
 
         $articleId = $rate->getArticle()->getId();
         $allRates = $rateRepository->findBy(['article' => $articleId]);
@@ -29,17 +29,13 @@ class RateController extends AbstractController
         $sum = 0;
         foreach($allRates as $r){
             $sum += $r->getNote();           
-        }
-        
+        }       
         $result = round($sum / count($allRates),2) ;
         $rate->getArticle()->setRateAverage($result);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($rate);
         $entityManager->flush();
 
-        return new JsonResponse($result);
-        
+        return new JsonResponse($result);        
     } 
-
-
 }

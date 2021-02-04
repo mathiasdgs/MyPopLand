@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use DateTime;
+
 /**
  * @Route("/admin/article", name="admin_article_")
  */
@@ -26,7 +27,6 @@ class ArticleController extends AbstractController
             'articles' => $articleRepository->findAll(),
         ]);
     }
-
     /**
      * @Route("/new", name="new", methods={"GET","POST"})
      */
@@ -37,13 +37,11 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $images = $form->get('images')->getData();
             foreach($images as $image){
                 if($images!= null){
             // On génère un nouveau nom de fichier
             $fichier = md5(uniqid()).'.'.$image->guessExtension();
-
             // On copie le fichier dans le dossier uploads
             $image->move(
                 $this->getParameter('images_directory'),
@@ -51,22 +49,18 @@ class ArticleController extends AbstractController
                 $article->setImage($fichier);
                 } 
             }
-
-            $article->setCreatedAt(new DateTime());
-            
+            $article->setCreatedAt(new DateTime());            
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($article);
             $entityManager->flush();
 
             return $this->redirectToRoute('admin_article_index');
         }
-
         return $this->render('/admin/article/new.html.twig', [
             'article' => $article,
-            'form' => $form->createView(),
+            'form'    => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="show", methods={"GET"})
      */
@@ -76,7 +70,6 @@ class ArticleController extends AbstractController
             'article' => $article,
         ]);
     }
-
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET","POST"})
      */
@@ -84,15 +77,12 @@ class ArticleController extends AbstractController
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-
             $images = $form->get('images')->getData();
             foreach($images as $image){
                 if($images!= null){
             // On génère un nouveau nom de fichier
             $fichier = md5(uniqid()).'.'.$image->guessExtension();
-
             // On copie le fichier dans le dossier uploads
             $image->move(
                 $this->getParameter('images_directory'),
@@ -100,18 +90,16 @@ class ArticleController extends AbstractController
                 $article->setImage($fichier);
             } 
         }
+        $this->getDoctrine()->getManager()->flush();
 
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('admin_article_index');
+        return $this->redirectToRoute('admin_article_index');
         }
 
         return $this->render('/admin/article/edit.html.twig', [
             'article' => $article,
-            'form' => $form->createView(),
+            'form'    => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="delete", methods={"DELETE"})
      */
@@ -122,9 +110,6 @@ class ArticleController extends AbstractController
             $entityManager->remove($article);
             $entityManager->flush();
         }
-
-        return $this->redirectToRoute('admin_article_index');
-    }
-
-    
+    return $this->redirectToRoute('admin_article_index');
+    }    
 }

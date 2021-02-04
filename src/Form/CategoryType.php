@@ -15,12 +15,11 @@ class CategoryType extends AbstractType
             ->add('title')
             
             ->add('images', Filetype::class,[
-                'label' => false,
-                'multiple' => false,
-                'mapped' => false,
-                'required' => false
-            ])
-        ;
+                  'label' => false,
+                  'multiple' => false,
+                  'mapped' => false,
+                  'required' => false
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

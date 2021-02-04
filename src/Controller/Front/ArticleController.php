@@ -25,7 +25,6 @@ class ArticleController extends AbstractController
             'controller_name' => 'ArticleController',
         ]);
     }
-
     /**
      * @Route("/", name="article_index")
      */
@@ -34,22 +33,16 @@ class ArticleController extends AbstractController
         return $this->render('front/article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
         ]);
-    }    
-    
-       /**
+    }        
+    /**
      * @Route("/{id}", name="article_showFront", methods={"GET"})
      */   
     public function show(article $article, ArticleRepository $articleRepository ): Response
-    {   
-        
-        $article = $articleRepository->findOneBy(
-            
-            ['id' => $article->getId()],
-            
-        );
-        
-        return $this->render('front/article/show.html.twig', [
-           
+    {           
+        $article = $articleRepository->findOneBy(    
+        ['id' => $article->getId()],            
+        );        
+        return $this->render('front/article/show.html.twig', [   
             'id' => $article,
         ]);
     }

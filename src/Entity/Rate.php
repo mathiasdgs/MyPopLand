@@ -35,8 +35,6 @@ class Rate
      */
     private $article;
 
-   
-
     public function getId(): ?int
     {
         return $this->id;

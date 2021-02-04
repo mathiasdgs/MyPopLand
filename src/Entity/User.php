@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\Collection as DocCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -57,6 +57,11 @@ class User implements UserInterface
      * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="users")
      */
     private $articles;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Collection::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $collection;
 
     public function __construct()
     {
@@ -154,10 +159,10 @@ class User implements UserInterface
         return $this;
     }
 
- /**
-     * @return Collection|Article[]
+   /**
+     * @return DocCollection|Article[]
      */
-    public function getArticle(): Collection
+    public function getArticle(): DocCollection
     {
         return $this->article;
     }
@@ -179,9 +184,9 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Rate[]
+     * @return DocCollection|Rate[]
      */
-    public function getRates(): Collection
+    public function getRates(): DocCollection
     {
         return $this->rates;
     }
@@ -202,7 +207,6 @@ class User implements UserInterface
         return $this;
     }
 
-
     public function isVerified(): bool
     {
         return $this->isVerified;
@@ -216,9 +220,9 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Article[]
+     * @return DocCollection|Article[]
      */
-    public function getArticles(): Collection
+    public function getArticles(): DocCollection
     {
         return $this->articles;
     }
@@ -230,4 +234,25 @@ class User implements UserInterface
         // return $this->id;
     }
 
+    public function getCollection(): ?Collection
+    {
+        return $this->collection;
+    }
+
+    public function setCollection(?Collection $collection): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($collection === null && $this->collection !== null) {
+            $this->collection->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($collection !== null && $collection->getUser() !== $this) {
+            $collection->setUser($this);
+        }
+
+        $this->collection = $collection;
+
+        return $this;
+    }
 }

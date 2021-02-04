@@ -6,28 +6,25 @@
     
  	<h1>{{ category.title }}</h1>
     	<div class="searchBy">	
-<select name="pets" id="pet-select">
-    <option value="">Filtrer par note:</option>
-    <option value="croissant">Croissant</option>
-    <option value="decroissant">Décroissant</option>   
-</select>
-	</div>
+			<select name="pets" id="pet-select">
+    			<option value="">Filtrer par note:</option>
+    			<option value="croissant">Croissant</option>
+    			<option value="decroissant">Décroissant</option>   
+			</select>
+		</div>
      {% for article in articles %}
 	<div class="card card-4 article">
-			{% if article.image %}
-			<p>Collection: {{ article.category }}</p>
-			
-			 <a href="{{ path('article_showFront', {'id': article.id}) }}"><img class="photo_pop" src="{{ article.image | url }}"> </a>
-			{% endif %}
-			<h4>{{ article.title }}</h4>
-
-			<p>{{ article.rateAverage }} /5 ★</p>
-			<a id="lien_article" href="{{ path('article_showFront', {'id': article.id}) }}">Voir la figurine</a>
-		</div>
+		{% if article.image %}
+		<p>Collection: {{ article.category }}</p>			
+		<a href="{{ path('article_showFront', {'id': article.id}) }}"><img class="photo_pop" src="{{ article.image | url }}" alt"image_pop"> </a>
+		{% endif %}
+		<h4>{{ article.title }}</h4>
+		<p>{{ article.rateAverage }} /5 ★</p>
+		<a id="lien_article" href="{{ path('article_showFront', {'id': article.id}) }}">Voir la figurine</a>
+	</div>
 	{% else %}
 		<tr>
 			<td colspan="8">no records found</td>
 		</tr>
 	{% endfor %}
- 
 {% endblock %}

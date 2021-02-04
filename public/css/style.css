@@ -257,6 +257,7 @@ margin-top:3vh ;
   text-shadow: 0px -2px #2980B9;
   transition: all 0.1s;
   -webkit-transition: all 0.1s;
+  margin-left: 1vw;
 }
 
 /**inscription**/
@@ -426,7 +427,7 @@ input #article_images{
 .content_mcpt{
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content:center;
   align-items: center;
   margin-top: 8vh;
 }
@@ -508,4 +509,11 @@ input #article_images{
   margin: 3vh;
   color: grey;
   
+}
+
+.collection_content_index{
+  padding-top: 10vh;
+}
+.article_content_index{
+  padding-top: 8vh;
 }

@@ -3,31 +3,27 @@
 {% block title %}Article
 {% endblock %}
 {% block content %}
-	<h1>
-		Figurines
-	</h1>
-
-	    	<div class="searchBy">	
-<select name="filter" id="search-By">
-    <option value="filterBy">Filtrer par note:</option>
-    <option value="croissant">Croissant</option>
-    <option value="decroissant">Décroissant</option>   
-</select>
-	</div>
+	<h1> Figurines </h1>
+<div class="searchBy">	
+	<select name="filter" id="search-By">
+    	<option value="filterBy">Filtrer par note:</option>
+    	<option value="croissant">Croissant</option>
+    	<option value="decroissant">Décroissant</option>   
+	</select>
+</div>
 	{% for article in articles %}
 	<div class="card card-4 article">
 			{% if article.image %}
 			<p>Collection: {{ article.category }}</p>
 			
-			 <a href="{{ path('article_showFront', {'id': article.id}) }}"><img class="photo_pop" src="{{ article.image | url }}" title=" Voir la figurine"> </a>
+			 <a href="{{ path('article_showFront', {'id': article.id}) }}"><img class="photo_pop" src="{{ article.image | url }}" title=" Voir la figurine" alt"image_pop"> </a>
 			{% endif %}
 			<h4>{{ article.title }}</h4>
 
 			<p>{{ article.rateAverage }} /5 ★</p>
 			{% if(app.user) %}
-			{# <a id="lien_article" href="{{ path('rate_showFront', {'id': article.id}) }}">Noter moi !</a> #}
-		{% endif %}
-		</div>
+			{% endif %}
+	</div>
 	{% else %}
 		<tr>
 			<td colspan="8">no records found</td>
