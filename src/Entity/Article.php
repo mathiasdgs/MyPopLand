@@ -55,7 +55,7 @@ class Article
     private $rateAverage;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Collection::class, mappedBy="article")
+     * @ORM\ManyToMany(targetEntity=Collection::class, mappedBy="articles")
      */
     private $collections;
 

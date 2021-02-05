@@ -17,7 +17,7 @@
 
 			<p>{{ article.rateAverage }} /5 ★</p>
 			{% if app.user %}
-				<a href="{{path('makecollection', {'id': article.id}) }}">Ajouter à ma collection </a>
+				<a href="{{path('delete', {'id': article.id}) }}">Supprimer de ma collection </a>
 			{% endif %}
 	</div>
 	{% else %}

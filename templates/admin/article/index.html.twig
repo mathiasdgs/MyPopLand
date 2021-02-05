@@ -21,6 +21,7 @@
                 <td>{{ article.id }}</td>
                 <td>{{ article.title }}</td>
                 <td>{{ article.image }}</td>
+                
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('admin_article_show', {'id': article.id}) }}">voir</a>
@@ -32,6 +33,7 @@
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
+        
         </tbody>
     </table>
 <p> Action </p>
@@ -39,4 +41,5 @@
     </br>
     </br>
     <a href="{{ path('home') }}">home</a>
+    
 {% endblock %}

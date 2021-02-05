@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="collection_content_index">
 	<h1>Collections</h1>
 	{% for category in categories %}
 		<div class="card-categ article">
@@ -14,5 +15,6 @@
 		<tr>
 			<td colspan="4">no records found</td>
 		</tr>
+</div>
 	{% endfor %}
 {% endblock %}

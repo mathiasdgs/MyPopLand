@@ -43,7 +43,7 @@ p{
 #nav-title-logo {
   width: 6vw;
   height: 6vh;
-  margin-left: 6vw;
+  
   margin-top: 4vh;
   border-radius: 70%;
 }
@@ -95,6 +95,10 @@ a:link {
 ul {
   margin-top: 3px;
 }
+
+
+
+
 
 /********************************/
 /******  Nav Bar ***************/
@@ -516,4 +520,10 @@ input #article_images{
 }
 .article_content_index{
   padding-top: 8vh;
+}
+.pagination{
+  padding-top: 2vh;
+  
+  text-align: center;
+  
 }

@@ -27,11 +27,11 @@ class Collection
     /**
      * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="collections")
      */
-    private $article;
+    private $articles;
 
     public function __construct()
     {
-        $this->article = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,17 +52,17 @@ class Collection
     }
  
     /**
-     * @return Collection|Article[]
+     * @return DocCollection|Article[]
      */
-    public function getArticle(): Collection
+    public function getArticles(): DocCollection
     {
-        return $this->article;
+        return $this->articles;
     }
 
     public function addArticle(Article $article): self
     {
-        if (!$this->article->contains($article)) {
-            $this->article[] = $article;
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
         }
 
         return $this;
@@ -70,7 +70,7 @@ class Collection
 
     public function removeArticle(Article $article): self
     {
-        $this->article->removeElement($article);
+        $this->articles->removeElement($article);
 
         return $this;
     }
