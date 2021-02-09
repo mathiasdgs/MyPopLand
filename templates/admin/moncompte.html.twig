@@ -7,7 +7,7 @@
 <h1> Mon compte </h1>
 <div class="content_mcpt">
     <li class="btn_mcpt">
-        <a class="btn_mcpt" href="{{ path('collection') }}">Ma Collection</a>
+        <a class="btn_mcpt" href="{{ path('show_collection',{'id': app.user.collection.id}) }}">Ma Collection</a>
     </li>
     <li class="btn_mcpt">
         <a class="btn_mcpt" href="{{ path('app_forgot_password_request') }}">Changer de mot de passe ?  </a>

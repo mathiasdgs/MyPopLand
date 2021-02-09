@@ -41,7 +41,6 @@ class CollectionController extends AbstractController
         $entityManager->persist($collection);
         $entityManager->flush();         
         return $this->redirectToRoute('show_collection',['id'=> $collection]);
-        // return $this->render('/admin/collection/show.html.twig');    
     }
 
     /**
@@ -67,6 +66,6 @@ class CollectionController extends AbstractController
             $entityManager->remove($article);
             $entityManager->flush();
         }
-    return $this->redirectToRoute('collection');
+    return $this->redirectToRoute('show_collection');
     } 
 }
