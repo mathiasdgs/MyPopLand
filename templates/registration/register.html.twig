@@ -2,20 +2,23 @@
 
 {% block title %}Register{% endblock %}
 
-{% block body %}
+{% block content %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
+    <h1>Inscription</h1>
+<div class="container">
+    <img src="{{asset ('images/flash.jpeg')}}" class="img_register">
+    {{ form_start(registrationForm, {'attr': {'class': 'form_style_form'}}) }}
+        {{ form_row(registrationForm.pseudo, {'attr': {'class': 'form_style_comment'}}) }}
+        {{ form_row(registrationForm.email, {'attr': {'class': 'form_style_comment'}}) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        
 
-        <button type="submit" class="btn">Register</button>
+    <button type="submit" class="btn_reg">Inscription</button>
     {{ form_end(registrationForm) }}
+</div>
 {% endblock %}

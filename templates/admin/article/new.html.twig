@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}New Article{% endblock %}
+
+{% block content %}
+    <h1>Ajouter une nouvelle Pop</h1>
+    <div class="new_article_content">
+    <img src="{{asset ('images/superman.jpeg')}}" class="img_addpop">
+    {{ include('admin/article/_form.html.twig') }}
+    </div>
+    <a class="btn_add_pop" href="{{ path('admin_article_index') }}">Retour</a>
+    <a class="btn_add_pop"  href="{{ path('home') }}">home</a>
+{% endblock %}

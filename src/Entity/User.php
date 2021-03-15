@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection as DocCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -42,14 +44,30 @@ class User implements UserInterface
     private $pseudo;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Rate::class, inversedBy="user")
+     * @ORM\OneToMany(targetEntity=Rate::class, mappedBy="user")
      */
-    private $rate;
+    private $rates;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="users")
+     */
+    private $articles;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Collection::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $collection;
+
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+        $this->rates = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -141,10 +159,10 @@ class User implements UserInterface
         return $this;
     }
 
- /**
-     * @return Collection|Article[]
+   /**
+     * @return DocCollection|Article[]
      */
-    public function getArticle(): Collection
+    public function getArticle(): DocCollection
     {
         return $this->article;
     }
@@ -165,14 +183,26 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getRate(): ?Rate
+    /**
+     * @return DocCollection|Rate[]
+     */
+    public function getRates(): DocCollection
     {
-        return $this->rate;
+        return $this->rates;
     }
 
-    public function setRate(?Rate $rate): self
+    public function addRate(Rate $rate): self
     {
-        $this->rate = $rate;
+        if (!$this->rates->contains($rate)) {
+            $this->rates[] = $rate;
+        }
+
+        return $this;
+    }
+
+    public function removeRate(Rate $rate): self
+    {
+        $this->rates->removeElement($rate);
 
         return $this;
     }
@@ -189,4 +219,40 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return DocCollection|Article[]
+     */
+    public function getArticles(): DocCollection
+    {
+        return $this->articles;
+    }
+
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->pseudo;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
+
+    public function getCollection(): ?Collection
+    {
+        return $this->collection;
+    }
+
+    public function setCollection(?Collection $collection): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($collection === null && $this->collection !== null) {
+            $this->collection->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($collection !== null && $collection->getUser() !== $this) {
+            $collection->setUser($this);
+        }
+
+        $this->collection = $collection;
+
+        return $this;
+    }
 }
