@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use App\Entity\User;
@@ -16,18 +17,9 @@ use App\Repository\ArticleRepository;
      */
 class CollectionController extends AbstractController
 {
+    
     /**
-     * @Route("/", name="collection")
-     */
-    public function index(): Response
-    {
-        return $this->render('admin/collection/index.html.twig', [
-            'controller_name' => 'MaCollectionController',
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="makecollection")
+     * @Route("/make/{id}", name="makecollection")
      */
     public function makeCollection(Article $article, collectionRepository $collectionRepository ): Response
     {   
@@ -40,31 +32,31 @@ class CollectionController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($collection);
         $entityManager->flush();         
-        return $this->redirectToRoute('show_collection',['id'=> $collection]);
+        return $this->redirectToRoute('show_collection');
     }
 
     /**
-     * @Route("/collection/{id}", name="show_collection" )
+     * @Route("/", name="show_collection" , methods={"GET"} )
      */
 
-    public function show(Collection $collection):Response
-    {   
+    public function show():Response
+    {
         return $this->render('/admin/collection/show.html.twig', [
-            'collection' => $collection,
+            'collection' => $this->getUser()->getCollection(),
         ]);
 
     }
 
 
      /**
-     * @Route("/{id}", name="delete", methods={"DELETE"})
+     * @Route("/{id}", name="delete_collection_article", methods={"DELETE"})
      */
     public function delete(Request $request, Article $article): Response
-    {
+    {   
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($article);
-            $entityManager->flush();
+            $this->getUser()->getCollection()->removeArticle($article);
+            $entityManager->flush();           
         }
     return $this->redirectToRoute('show_collection');
     } 

@@ -1,30 +1,30 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Hello CollectionController!{% endblock %}
+{% block title %}Hello CollectionController!
+{% endblock %}
 
 {% block content %}
-<h1> Ma Collection </h1>
- 
-    {% for article in collection.articles %}
-         
-<div class="card card-4 article">
+	<h1>
+		Ma Collection
+	</h1>
+	{% for article in collection.articles %}
+		<div class="card card-4 article">
 			{% if article.image %}
-			<p>Collection: {{ article.category }}</p>
-			
-			 <a href="{{ path('article_showFront', {'id': article.id}) }}"><img class="photo_pop" src="{{ article.image | url }}" title=" Voir la figurine" alt"image_pop"> </a>
+				<p>Collection:
+					{{ article.category }}</p>
+				<a href="{{ path('article_showFront', {'id': article.id}) }}">
+					<img class="photo_pop" src="{{ article.image | url }}" title=" Voir la figurine" alt"image_pop">
+				</a>
 			{% endif %}
 			<h4>{{ article.title }}</h4>
-
-			<p>{{ article.rateAverage }} /5 ★</p>
+			<p>{{ article.rateAverage }}/5 ★</p>
 			{% if app.user %}
-				<a href="{{path('delete', {'id': article.id}) }}">Supprimer de ma collection </a>
+				<form method="post" action="{{ path('delete_collection_article', {'id': article.id}) }}" onsubmit="return confirm('Êtes vous sûr de vouloir supprimer cette figurine de votre collection ?');">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+					<button class="btn">Supprimer</button>
+				</form>
 			{% endif %}
-	</div>
-	{% else %}
-		<tr>
-			<td colspan="8">no records found</td>
-		</tr>
-</div>		
-
- {% endfor %}
+		</div>
+	{% endfor %}
 {% endblock %}
